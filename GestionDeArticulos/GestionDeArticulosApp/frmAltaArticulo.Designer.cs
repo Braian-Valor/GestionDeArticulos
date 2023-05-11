@@ -118,6 +118,7 @@
             // 
             // cboxCategoria
             // 
+            this.cboxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxCategoria.FormattingEnabled = true;
             this.cboxCategoria.Location = new System.Drawing.Point(176, 264);
             this.cboxCategoria.Name = "cboxCategoria";
@@ -126,6 +127,7 @@
             // 
             // cboxMarca
             // 
+            this.cboxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxMarca.FormattingEnabled = true;
             this.cboxMarca.Location = new System.Drawing.Point(176, 210);
             this.cboxMarca.Name = "cboxMarca";
@@ -264,6 +266,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAltaArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
             this.panelContenedorAlta.ResumeLayout(false);
             this.panelContenedorAlta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagenAlta)).EndInit();

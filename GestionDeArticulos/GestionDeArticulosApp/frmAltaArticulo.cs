@@ -34,10 +34,28 @@ namespace GestionDeArticulosApp
                 articulo.Codigo = tboxCodigo.Text;
                 articulo.Nombre = tboxNombre.Text;
                 articulo.Descripcion = tboxDescripcion.Text;
+                articulo.Marca = (Marca)cboxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
 
                 negocio.agregar(articulo);
                 MessageBox.Show("Articulo agregado");
                 Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAltaArticulo_Load(object sender, EventArgs e)
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+
+            try
+            {
+                cboxMarca.DataSource = marcaNegocio.listar();
+                cboxCategoria.DataSource = categoriaNegocio.listar();
             }
             catch (Exception ex)
             {
