@@ -65,7 +65,9 @@ namespace Negocio
 
 			try
 			{
-				datos.setearConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion) Values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "')");
+				datos.setearConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria) Values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', @IdMarca, @IdCategoria)");
+				datos.setearParametros("@IdMarca", nuevo.Marca.Id);
+				datos.setearParametros("@IdCategoria", nuevo.Categoria.Id);
 				datos.ejecutarAccion();
 			}
 			catch (Exception ex)
