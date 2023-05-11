@@ -21,7 +21,7 @@ namespace Negocio
 			{
 				conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
 				comando.CommandType = System.Data.CommandType.Text;
-				comando.CommandText = "Select A.Codigo, A.Nombre, A.Descripcion, I.ImagenUrl as Imagen, M.Descripcion as Marca, C.Descripcion as Categoria, A.Precio From ARTICULOS A Inner Join IMAGENES I ON A.Id = I.IdArticulo Inner Join MARCAS M ON A.IdMarca = M.Id Inner Join CATEGORIAS C ON A.IdCategoria = C.Id";
+				comando.CommandText = "Select A.Id, A.Codigo, A.Nombre, A.Descripcion, I.ImagenUrl as Imagen, M.Descripcion as Marca, C.Descripcion as Categoria, A.Precio From ARTICULOS A Inner Join IMAGENES I ON A.Id = I.IdArticulo Inner Join MARCAS M ON A.IdMarca = M.Id Inner Join CATEGORIAS C ON A.IdCategoria = C.Id";
 				comando.Connection = conexion;
 
 				conexion.Open();
@@ -31,6 +31,7 @@ namespace Negocio
 				{
 					Articulo aux = new Articulo();
 
+					aux.Id = (int)lector["Id"];
 					aux.Codigo = (string)lector["Codigo"];
 					aux.Nombre = (string)lector["Nombre"];
 					aux.Descripcion = (string)lector["Descripcion"];
@@ -40,7 +41,11 @@ namespace Negocio
 					aux.Marca.Descripcion = (string)lector["Marca"];
 					aux.Categoria = new Categoria();
 					aux.Categoria.Descripcion = (string)lector["Categoria"];
-					aux.Precio = (decimal)lector["Precio"];
+
+                    //decimal dosDecimal;
+                    //dosDecimal = (decimal)lector["Precio"];
+                    //aux.Precio = Decimal.Parse(dosDecimal.ToString("0.00"));
+                    aux.Precio = (decimal)lector["Precio"];
 
 					lista.Add(aux);
 				}
@@ -53,5 +58,24 @@ namespace Negocio
 				throw ex;
 			}
         }
+
+		public void agregar(Articulo nuevo)
+		{
+			AccesoDatos datos = new AccesoDatos();
+
+			try
+			{
+				datos.setearConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion) Values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "')");
+				datos.ejecutarAccion();
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+			finally
+			{
+				datos.cerrarConexion();
+			}
+		}
     }
 }

@@ -40,15 +40,15 @@
             this.pboxLogo = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pboxArticulo = new System.Windows.Forms.PictureBox();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxLogo)).BeginInit();
             this.panelContenedor.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBarraTitulo
@@ -151,6 +151,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // pboxLogo
             // 
@@ -183,6 +184,15 @@
             this.panel3.Size = new System.Drawing.Size(1110, 559);
             this.panel3.TabIndex = 5;
             // 
+            // pboxArticulo
+            // 
+            this.pboxArticulo.Location = new System.Drawing.Point(723, 25);
+            this.pboxArticulo.Name = "pboxArticulo";
+            this.pboxArticulo.Size = new System.Drawing.Size(375, 400);
+            this.pboxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pboxArticulo.TabIndex = 1;
+            this.pboxArticulo.TabStop = false;
+            // 
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -193,15 +203,6 @@
             this.dgvArticulos.Size = new System.Drawing.Size(702, 400);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
-            // 
-            // pboxArticulo
-            // 
-            this.pboxArticulo.Location = new System.Drawing.Point(723, 25);
-            this.pboxArticulo.Name = "pboxArticulo";
-            this.pboxArticulo.Size = new System.Drawing.Size(375, 400);
-            this.pboxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pboxArticulo.TabIndex = 1;
-            this.pboxArticulo.TabStop = false;
             // 
             // frmPrincipal
             // 
@@ -220,8 +221,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pboxLogo)).EndInit();
             this.panelContenedor.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.ResumeLayout(false);
 
         }
