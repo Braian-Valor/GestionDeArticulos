@@ -21,13 +21,26 @@ namespace GestionDeArticulosApp
             InitializeComponent();
         }
 
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private void cargar()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulo = negocio.listar();
-            dgvArticulos.DataSource = listaArticulo;
-            dgvArticulos.Columns["Imagen"].Visible = false;
-            cargarImagen(listaArticulo[0].Imagen.Url);
+
+            try
+            {
+                listaArticulo = negocio.listar();
+                dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["Imagen"].Visible = false;
+                cargarImagen(listaArticulo[0].Imagen.Url);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            cargar();
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -51,7 +64,10 @@ namespace GestionDeArticulosApp
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaArticulo alta = new frmAltaArticulo();
+            pboxArticulo.Visible = false;
             alta.ShowDialog();
+            pboxArticulo.Visible = true;
+            cargar();
         }
     }
 }

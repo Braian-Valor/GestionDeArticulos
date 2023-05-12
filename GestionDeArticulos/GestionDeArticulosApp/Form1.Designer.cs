@@ -57,7 +57,7 @@
             this.panelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.panelBarraTitulo.Name = "panelBarraTitulo";
-            this.panelBarraTitulo.Size = new System.Drawing.Size(1330, 35);
+            this.panelBarraTitulo.Size = new System.Drawing.Size(1335, 35);
             this.panelBarraTitulo.TabIndex = 0;
             // 
             // panelMenu
@@ -170,7 +170,7 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(220, 35);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1110, 559);
+            this.panelContenedor.Size = new System.Drawing.Size(1115, 559);
             this.panelContenedor.TabIndex = 2;
             // 
             // panel3
@@ -181,14 +181,14 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1110, 559);
+            this.panel3.Size = new System.Drawing.Size(1115, 559);
             this.panel3.TabIndex = 5;
             // 
             // pboxArticulo
             // 
             this.pboxArticulo.Location = new System.Drawing.Point(723, 25);
             this.pboxArticulo.Name = "pboxArticulo";
-            this.pboxArticulo.Size = new System.Drawing.Size(375, 400);
+            this.pboxArticulo.Size = new System.Drawing.Size(380, 400);
             this.pboxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxArticulo.TabIndex = 1;
             this.pboxArticulo.TabStop = false;
@@ -196,10 +196,13 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(15, 25);
+            this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.RowTemplate.Height = 28;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(702, 400);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -208,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 594);
+            this.ClientSize = new System.Drawing.Size(1335, 594);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelBarraTitulo);

@@ -32,20 +32,28 @@ namespace Negocio
 					Articulo aux = new Articulo();
 
 					aux.Id = (int)lector["Id"];
-					aux.Codigo = (string)lector["Codigo"];
-					aux.Nombre = (string)lector["Nombre"];
-					aux.Descripcion = (string)lector["Descripcion"];
+
+					if (!(lector["Codigo"] is DBNull))
+						aux.Codigo = (string)lector["Codigo"];
+                    if (!(lector["Nombre"] is DBNull))
+                        aux.Nombre = (string)lector["Nombre"];
+                    if (!(lector["Descripcion"] is DBNull))
+                        aux.Descripcion = (string)lector["Descripcion"];
 					aux.Imagen = new Imagen();
-					aux.Imagen.Url = (string)lector["Imagen"];
+                    if (!(lector["Imagen"] is DBNull))
+                        aux.Imagen.Url = (string)lector["Imagen"];
 					aux.Marca = new Marca();
-					aux.Marca.Descripcion = (string)lector["Marca"];
+                    if (!(lector["Marca"] is DBNull))
+                        aux.Marca.Descripcion = (string)lector["Marca"];
 					aux.Categoria = new Categoria();
-					aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    if (!(lector["Categoria"] is DBNull))
+                        aux.Categoria.Descripcion = (string)lector["Categoria"];
 
                     //decimal dosDecimal;
                     //dosDecimal = (decimal)lector["Precio"];
                     //aux.Precio = Decimal.Parse(dosDecimal.ToString("0.00"));
-                    aux.Precio = (decimal)lector["Precio"];
+                    if (!(lector["Precio"] is DBNull))
+                        aux.Precio = (decimal)lector["Precio"];
 
 					lista.Add(aux);
 				}
@@ -65,9 +73,10 @@ namespace Negocio
 
 			try
 			{
-				datos.setearConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria) Values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', @IdMarca, @IdCategoria)");
+				datos.setearConsulta("Insert Into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) Values('" + nuevo.Codigo + "', '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', @IdMarca, @IdCategoria, @Precio)");
 				datos.setearParametros("@IdMarca", nuevo.Marca.Id);
 				datos.setearParametros("@IdCategoria", nuevo.Categoria.Id);
+				datos.setearParametros("@Precio", nuevo.Precio);
 				datos.ejecutarAccion();
 			}
 			catch (Exception ex)

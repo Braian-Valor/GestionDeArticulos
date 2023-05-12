@@ -36,6 +36,7 @@ namespace GestionDeArticulosApp
                 articulo.Descripcion = tboxDescripcion.Text;
                 articulo.Marca = (Marca)cboxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(tboxPrecio.Text);
 
                 negocio.agregar(articulo);
                 MessageBox.Show("Articulo agregado");
