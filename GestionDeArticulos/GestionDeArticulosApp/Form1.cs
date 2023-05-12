@@ -69,5 +69,17 @@ namespace GestionDeArticulosApp
             pboxArticulo.Visible = true;
             cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo articuloSeleccionado = new Articulo();
+            articuloSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            frmAltaArticulo modificar = new frmAltaArticulo(articuloSeleccionado);
+            pboxArticulo.Visible = false;
+            modificar.ShowDialog();
+            pboxArticulo.Visible = true;
+            cargar();
+        }
     }
 }

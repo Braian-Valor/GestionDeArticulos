@@ -91,6 +91,7 @@
             this.pboxImagenAlta.Location = new System.Drawing.Point(495, 14);
             this.pboxImagenAlta.Name = "pboxImagenAlta";
             this.pboxImagenAlta.Size = new System.Drawing.Size(383, 396);
+            this.pboxImagenAlta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxImagenAlta.TabIndex = 18;
             this.pboxImagenAlta.TabStop = false;
             // 
@@ -124,7 +125,7 @@
             this.cboxCategoria.Location = new System.Drawing.Point(169, 313);
             this.cboxCategoria.Name = "cboxCategoria";
             this.cboxCategoria.Size = new System.Drawing.Size(312, 37);
-            this.cboxCategoria.TabIndex = 15;
+            this.cboxCategoria.TabIndex = 5;
             // 
             // cboxMarca
             // 
@@ -134,7 +135,7 @@
             this.cboxMarca.Location = new System.Drawing.Point(169, 249);
             this.cboxMarca.Name = "cboxMarca";
             this.cboxMarca.Size = new System.Drawing.Size(312, 37);
-            this.cboxMarca.TabIndex = 14;
+            this.cboxMarca.TabIndex = 4;
             // 
             // tboxPrecio
             // 
@@ -142,7 +143,7 @@
             this.tboxPrecio.Location = new System.Drawing.Point(169, 375);
             this.tboxPrecio.Name = "tboxPrecio";
             this.tboxPrecio.Size = new System.Drawing.Size(312, 35);
-            this.tboxPrecio.TabIndex = 13;
+            this.tboxPrecio.TabIndex = 6;
             // 
             // lblPrecio
             // 
@@ -161,7 +162,8 @@
             this.tboxImagen.Location = new System.Drawing.Point(169, 190);
             this.tboxImagen.Name = "tboxImagen";
             this.tboxImagen.Size = new System.Drawing.Size(312, 35);
-            this.tboxImagen.TabIndex = 11;
+            this.tboxImagen.TabIndex = 3;
+            this.tboxImagen.Leave += new System.EventHandler(this.tboxImagen_Leave);
             // 
             // lblImagen
             // 
@@ -180,7 +182,7 @@
             this.tboxDescripcion.Location = new System.Drawing.Point(169, 127);
             this.tboxDescripcion.Name = "tboxDescripcion";
             this.tboxDescripcion.Size = new System.Drawing.Size(312, 35);
-            this.tboxDescripcion.TabIndex = 9;
+            this.tboxDescripcion.TabIndex = 2;
             // 
             // label3
             // 
@@ -199,7 +201,7 @@
             this.tboxNombre.Location = new System.Drawing.Point(169, 70);
             this.tboxNombre.Name = "tboxNombre";
             this.tboxNombre.Size = new System.Drawing.Size(312, 35);
-            this.tboxNombre.TabIndex = 7;
+            this.tboxNombre.TabIndex = 1;
             // 
             // label2
             // 
@@ -218,7 +220,7 @@
             this.tboxCodigo.Location = new System.Drawing.Point(169, 14);
             this.tboxCodigo.Name = "tboxCodigo";
             this.tboxCodigo.Size = new System.Drawing.Size(312, 35);
-            this.tboxCodigo.TabIndex = 5;
+            this.tboxCodigo.TabIndex = 0;
             // 
             // label1
             // 
@@ -242,7 +244,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(495, 461);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(216, 35);
-            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -258,7 +260,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(169, 461);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(216, 35);
-            this.btnAceptar.TabIndex = 1;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);

@@ -14,9 +14,17 @@ namespace GestionDeArticulosApp
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo articulo;
+
         public frmAltaArticulo()
         {
             InitializeComponent();
+        }
+
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -26,20 +34,33 @@ namespace GestionDeArticulosApp
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
+                if (articulo == null)
+                    articulo = new Articulo();
+
                 articulo.Codigo = tboxCodigo.Text;
                 articulo.Nombre = tboxNombre.Text;
                 articulo.Descripcion = tboxDescripcion.Text;
+                articulo.Imagen = new Imagen();
+                articulo.Imagen.Url = tboxImagen.Text;
                 articulo.Marca = (Marca)cboxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cboxCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(tboxPrecio.Text);
 
-                negocio.agregar(articulo);
-                MessageBox.Show("Articulo agregado");
+                if (articulo.Id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Articulo modificado");
+                }
+                else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Articulo agregado");
+                }
+
                 Close();
             }
             catch (Exception ex)
@@ -56,11 +77,44 @@ namespace GestionDeArticulosApp
             try
             {
                 cboxMarca.DataSource = marcaNegocio.listar();
+                cboxMarca.ValueMember = "Id";
+                cboxMarca.DisplayMember = "Descripcion";
                 cboxCategoria.DataSource = categoriaNegocio.listar();
+                cboxCategoria.ValueMember = "Id";
+                cboxCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    tboxCodigo.Text = articulo.Codigo;
+                    tboxNombre.Text = articulo.Nombre;
+                    tboxDescripcion.Text = articulo.Descripcion;
+                    tboxImagen.Text = articulo.Imagen.Url;
+                    cboxMarca.SelectedValue = articulo.Marca.Id;
+                    cboxCategoria.SelectedValue = articulo.Categoria.Id;
+                    tboxPrecio.Text = articulo.Precio.ToString();
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void tboxImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(tboxImagen.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pboxImagenAlta.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pboxImagenAlta.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
             }
         }
     }
