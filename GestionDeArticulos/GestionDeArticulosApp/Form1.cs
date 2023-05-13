@@ -81,5 +81,27 @@ namespace GestionDeArticulosApp
             pboxArticulo.Visible = true;
             cargar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo articuloSeleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Eliminar articulo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes) 
+                { 
+                    articuloSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(articuloSeleccionado.Id);
+                    MessageBox.Show("Articulo eliminado");
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
